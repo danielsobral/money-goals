@@ -10,7 +10,7 @@
 /resources/js/routes
 /resources/js/wayfinder
 /vendor
-infra/containers/data/postgres
+/infra/containers/data/postgres/
 infra/containers/envs/.env.development
 .DS_Store
 .env
