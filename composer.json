@@ -100,6 +100,9 @@
         ],
         "wait-for-db": [
             "php infra/containers/dev/scripts/wait-for-db.php"
+        ],
+        "clear": [
+            "php artisan config:clear && php artisan cache:clear && php artisan config:cache"
         ]
     },
     "extra": {
