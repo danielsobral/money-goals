@@ -54,6 +54,12 @@
             "@wait-for-db",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
+        "dev-migrate": [
+            "Composer\\Config::disableProcessTimeout",
+            "@service:up",
+            "@wait-for-db-migrate",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+        ],
         "dev:ssr": [
             "npm run build:ssr",
             "Composer\\Config::disableProcessTimeout",
@@ -100,6 +106,9 @@
         ],
         "wait-for-db": [
             "php infra/containers/dev/scripts/wait-for-db.php"
+        ],
+        "wait-for-db-migrate": [
+            "php infra/containers/dev/scripts/wait-for-db.php --migrate"
         ],
         "clear": [
             "php artisan config:clear && php artisan cache:clear && php artisan config:cache"
